@@ -1,5 +1,3 @@
-console.log("Hello World!");
-
 // Rock Paper Scissors
 
 function getRandomNumber() {
@@ -101,6 +99,7 @@ function playRound(playerSelection, computerSelection) {
 
 let roundsPlayed = 1;
 
+// can improve this logic too
 while (roundsPlayed < 6) {
 
     // Play five rounds
