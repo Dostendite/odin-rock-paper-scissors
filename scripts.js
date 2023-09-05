@@ -1,4 +1,22 @@
-// Rock Paper Scissors
+// ~~~~~~~~ ROCK PAPER SCISSORS - PROGRAM START ~~~~~~~~
+
+let roundsPlayed = 1;
+
+// can improve this logic too
+while (roundsPlayed < 6) {
+
+    // Play five rounds
+
+    console.log(`Round number ${roundsPlayed}`);
+    const computerSelection = getComputerChoice();
+    const playerSelection = getPlayerChoice();
+
+    // Log result and add a round to the counter, then restart
+    console.log(playRound(playerSelection, computerSelection));
+    roundsPlayed++;
+}
+
+// ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
 function getComputerChoice() {
 
@@ -17,6 +35,7 @@ function getComputerChoice() {
 
 function getPlayerChoice () {
     const playerSelection = prompt("Choose your weapon (Rock, Paper, Scissors): ");
+
 
     // can add error handling later
     if (playerSelection[0].toLowerCase() === "r") {
@@ -89,23 +108,4 @@ function playRound(playerSelection, computerSelection) {
     // return a string that declares the winner
     // of the round like: "You lose! Paper beats Rock"
     return result;
-}
-
-
-// ~~~~~~~~ PROGRAM START ~~~~~~~~
-
-let roundsPlayed = 1;
-
-// can improve this logic too
-while (roundsPlayed < 6) {
-
-    // Play five rounds
-
-    console.log(`Round number ${roundsPlayed}`);
-    const computerSelection = getComputerChoice();
-    const playerSelection = getPlayerChoice();
-
-    // Log result and add a round to the counter, then restart
-    console.log(playRound(playerSelection, computerSelection));
-    roundsPlayed++;
 }
