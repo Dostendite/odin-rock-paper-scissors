@@ -1,10 +1,24 @@
+// Variables to be used later
+let roundWinner = "";
+let playerScore = 0;
+let computerScore = 0;
+
+// First check for all the cases where the player wins,
+// then add the score accordingly
+
+// And do the same for the computer
+
+// The first to get 3 points wins, so it's a BO5
+
+// We might have to create a restartGame function
+// to reset the score
+
 // ~~~~~~~~ ROCK PAPER SCISSORS - PROGRAM START ~~~~~~~~
 
-console.log(`Rock Paper Scissors game`);
 const computerSelection = getComputerChoice();
 const playerSelection = getPlayerChoice();
 
-// Log result and add a round to the counter, then restart
+// Alert result
 alert(playRound(playerSelection, computerSelection));
 
 
