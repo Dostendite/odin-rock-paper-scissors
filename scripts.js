@@ -1,23 +1,17 @@
 // ~~~~~~~~ ROCK PAPER SCISSORS - PROGRAM START ~~~~~~~~
 
-let roundsPlayed = 1;
+console.log(`Rock Paper Scissors game`);
+const computerSelection = getComputerChoice();
+const playerSelection = getPlayerChoice();
 
-// can improve this logic too
-while (roundsPlayed < 6) {
+// Log result and add a round to the counter, then restart
+alert(playRound(playerSelection, computerSelection));
 
-    // Play five rounds
-
-    console.log(`Round number ${roundsPlayed}`);
-    const computerSelection = getComputerChoice();
-    const playerSelection = getPlayerChoice();
-
-    // Log result and add a round to the counter, then restart
-    console.log(playRound(playerSelection, computerSelection));
-    roundsPlayed++;
-}
 
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
+// Generate a random number between 1 and 3
+// to choose the computer's weapon
 function getComputerChoice() {
 
     let randomNumber = ~~(Math.random() * 3);
@@ -33,23 +27,23 @@ function getComputerChoice() {
 
 }
 
+// Prompt player to choose their weapon
+// get first letter of their input and return the weapon string
 function getPlayerChoice () {
-    const playerSelection = prompt("Choose your weapon (Rock, Paper, Scissors): ");
+    let playerSelection = prompt("Choose your weapon (Rock, Paper, Scissors): ");
 
-
-    // can add error handling later
-    if (playerSelection[0].toLowerCase() === "r") {
-        return "Rock";
-    } else if (playerSelection[0].toLowerCase() === "p") {
-        return "Paper";
-    } else  if (playerSelection[0].toLowerCase() === "s") {
-        return "Scissors";
+    switch (playerSelection[0].toLowerCase()) {
+        case "r":
+            return "Rock";
+        case "p":
+            return "Paper";
+        case "s":
+            return "Scissors";
     }
 }
 
-
+// Play a round & compare the players' weapon against the computer's
 function playRound(playerSelection, computerSelection) {
-    // play rps round
 
     // string to print at the end
     let result;
