@@ -1,25 +1,30 @@
 // Variables to be used later
+
+// Function returns rounwinner
 let roundWinner = "";
+
+// And the score for each is incremented
+// in case they win
 let playerScore = 0;
 let computerScore = 0;
 
-// First check for all the cases where the player wins,
-// then add the score accordingly
-
-// And do the same for the computer
-
-// The first to get 3 points wins, so it's a BO5
-
-// We might have to create a restartGame function
-// to reset the score
+// Play game until BO5 is finished
+let playing = true;
 
 // ~~~~~~~~ ROCK PAPER SCISSORS - PROGRAM START ~~~~~~~~
 
-const computerSelection = getComputerChoice();
-const playerSelection = getPlayerChoice();
+while (playing) {
 
-// Alert result
-alert(playRound(playerSelection, computerSelection));
+    playRound();
+
+    if (playerScore === 3) {
+        alert("You win, thanks for playing!");
+        break;
+    } else if (computerScore === 3) {
+        alert("The computer wins, thanks for playing!");
+        break;
+    }
+}
 
 
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
@@ -28,6 +33,7 @@ alert(playRound(playerSelection, computerSelection));
 // to choose the computer's weapon
 function getComputerChoice() {
 
+    // * 3 means up to 3, so [0, 1, 2]
     let randomNumber = ~~(Math.random() * 3);
 
     switch (randomNumber) {
@@ -44,9 +50,9 @@ function getComputerChoice() {
 // Prompt player to choose their weapon
 // get first letter of their input and return the weapon string
 function getPlayerChoice () {
-    let playerSelection = prompt("Choose your weapon (Rock, Paper, Scissors): ");
+    let selection = prompt("Choose your weapon (Rock, Paper, Scissors): ");
 
-    switch (playerSelection[0].toLowerCase()) {
+    switch (selection[0].toLowerCase()) {
         case "r":
             return "Rock";
         case "p":
@@ -57,63 +63,44 @@ function getPlayerChoice () {
 }
 
 // Play a round & compare the players' weapon against the computer's
-function playRound(playerSelection, computerSelection) {
+function playRound() {
+
+    const computerSelection = getComputerChoice();
+    const playerSelection = getPlayerChoice();
 
     // string to print at the end
-    let result;
+    let roundWinner;
 
-    // if true, the player wins, if false, the computer wins
-    let playerWins;
+    // check for tie
 
-    // if playerSelection is equal to computerSelection,
-    // the result is a tie, else compare:
-
-    // playerSelection || computerSelection || winner
-    // Rock            || Paper             || computer
-    // Rock            || Scissors          || player
-
-    // Paper           || Rock              || player
-    // Paper           || Scissors          || computer
-
-    // Scissors        || Rock              || computer
-    // Scissors        || Paper             || player
-
-    // compare
-    if (playerSelection === "Rock") {
-        if (computerSelection === "Paper") {
-            playerWins = false;
-        } else if (computerSelection === "Scissors") {
-            playerWins = true;
-        }
-    }
-
-    if (playerSelection === "Paper") {
-        if (computerSelection === "Rock") {
-            playerWins = true;
-        } else if (computerSelection === "Scissors") {
-            playerWins = false;
-        }
-    }
-
-    if (playerSelection === "Scissors") {
-        if (computerSelection === "Rock") {
-            playerWins = false;
-        } else if (computerSelection === "Paper") {
-            playerWins = true;
-        }
-    }
-
-    // check for a tie first, if not, check for a winner
-    
     if (playerSelection === computerSelection) {
-    result = `It's a tie! ${playerSelection} ties with ${computerSelection}!`
-    } else if (playerWins) {
-        result = `Player wins! ${playerSelection} beats ${computerSelection}!`
-    } else {
-        result = `Computer wins! ${computerSelection} beats ${playerSelection}!`
+        roundWinner = "tie";
     }
 
-    // return a string that declares the winner
-    // of the round like: "You lose! Paper beats Rock"
-    return result;
+    // check for cases where the player wins
+    if (playerSelection === "Rock" && computerSelection === "Scissors" ||
+        playerSelection === "Paper" && computerSelection === "Rock" ||
+        playerSelection === "Scissors" && computerSelection === "Paper") {
+            playerScore++;
+            roundWinner = "player"
+        }
+    
+    // check for cases where the computer wins
+    if (computerSelection === "Rock" && playerSelection === "Scissors" ||
+        computerSelection === "Paper" && playerSelection === "Rock" ||
+        computerSelection === "Scissors" && playerSelection === "Paper") {
+            computerScore++;
+            roundWinner = "computer"
+        }
+
+    // could do a cool thing here, like "Scissor cuts paper!"
+
+    // alert winner message
+    if (roundWinner === "tie") {
+        alert("It's a tie!");
+    } else if (roundWinner === "player") {
+        alert(`Player wins! ${playerSelection} beats ${computerSelection}!`)
+    } else {
+        alert(`Computer wins! ${computerSelection} beats ${playerSelection}!`)
+    }
 }
