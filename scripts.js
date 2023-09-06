@@ -9,11 +9,11 @@ let playerScore = 0;
 let computerScore = 0;
 
 // Play game until BO5 is finished
-let playing = true;
+let gameRunning = true;
 
 // ~~~~~~~~ ROCK PAPER SCISSORS - PROGRAM START ~~~~~~~~
 
-while (playing) {
+while (gameRunning) {
 
     playRound();
 
@@ -93,9 +93,9 @@ function playRound() {
             roundWinner = "computer"
         }
 
-    // could do a cool thing here, like "Scissor cuts paper!"
+    // could do a cool thing here, like "Scissor cuts paper!" and so on
 
-    // alert winner message
+    // alert winner of each round
     if (roundWinner === "tie") {
         alert("It's a tie!");
     } else if (roundWinner === "player") {
