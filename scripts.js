@@ -1,17 +1,11 @@
-// Variables to be used later
+// Rock Paper Scissors - by 210
 
-// Function returns rounwinner
-let roundWinner = "";
-
-// And the score for each is incremented
-// in case they win
+// Keep track of scores to declare BO5 winner
 let playerScore = 0;
 let computerScore = 0;
-
-// Play game until BO5 is finished
 let gameRunning = true;
 
-// ~~~~~~~~ ROCK PAPER SCISSORS - PROGRAM START ~~~~~~~~
+// ~~~~~~~~~~ LOGIC ~~~~~~~~~~
 
 while (gameRunning) {
 
@@ -26,14 +20,11 @@ while (gameRunning) {
     }
 }
 
-
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
-// Generate a random number between 1 and 3
-// to choose the computer's weapon
 function getComputerChoice() {
 
-    // * 3 means up to 3, so [0, 1, 2]
+    // Math.random() * n yields a random number up to n-1
     let randomNumber = ~~(Math.random() * 3);
 
     switch (randomNumber) {
@@ -47,8 +38,6 @@ function getComputerChoice() {
 
 }
 
-// Prompt player to choose their weapon
-// get first letter of their input and return the weapon string
 function getPlayerChoice () {
     let selection = prompt("Choose your weapon (Rock, Paper, Scissors): ");
 
@@ -62,22 +51,19 @@ function getPlayerChoice () {
     }
 }
 
-// Play a round & compare the players' weapon against the computer's
 function playRound() {
 
     const computerSelection = getComputerChoice();
     const playerSelection = getPlayerChoice();
 
-    // string to print at the end
+    // declare winner at the end
     let roundWinner;
-
-    // check for tie
 
     if (playerSelection === computerSelection) {
         roundWinner = "tie";
     }
 
-    // check for cases where the player wins
+    // cases where the player wins
     if (playerSelection === "Rock" && computerSelection === "Scissors" ||
         playerSelection === "Paper" && computerSelection === "Rock" ||
         playerSelection === "Scissors" && computerSelection === "Paper") {
@@ -85,7 +71,7 @@ function playRound() {
             roundWinner = "player"
         }
     
-    // check for cases where the computer wins
+    // cases where the computer wins
     if (computerSelection === "Rock" && playerSelection === "Scissors" ||
         computerSelection === "Paper" && playerSelection === "Rock" ||
         computerSelection === "Scissors" && playerSelection === "Paper") {
@@ -94,8 +80,6 @@ function playRound() {
         }
 
     // could do a cool thing here, like "Scissor cuts paper!" and so on
-
-    // alert winner of each round
     if (roundWinner === "tie") {
         alert("It's a tie!");
     } else if (roundWinner === "player") {
