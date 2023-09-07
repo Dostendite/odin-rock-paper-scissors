@@ -1,4 +1,4 @@
-# First JS Project
+# First JS Project (RPS)
 
 As instructed in the Odin Project curriculum,
 I will build a rock, paper scissors game that
