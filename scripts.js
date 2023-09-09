@@ -23,7 +23,7 @@ while (gameRunning) {
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
 function getComputerChoice() {
-
+    
     // Math.random() * n yields a random number up to n-1
     let randomNumber = ~~(Math.random() * 3);
 
@@ -55,15 +55,13 @@ function playRound() {
 
     const computerSelection = getComputerChoice();
     const playerSelection = getPlayerChoice();
-
-    // declare winner at the end
     let roundWinner;
 
     if (playerSelection === computerSelection) {
         roundWinner = "tie";
     }
 
-    // cases where the player wins
+    // check for cases where the player wins
     if (playerSelection === "Rock" && computerSelection === "Scissors" ||
         playerSelection === "Paper" && computerSelection === "Rock" ||
         playerSelection === "Scissors" && computerSelection === "Paper") {
@@ -71,7 +69,7 @@ function playRound() {
             roundWinner = "player"
         }
     
-    // cases where the computer wins
+    // check for cases where the computer wins
     if (computerSelection === "Rock" && playerSelection === "Scissors" ||
         computerSelection === "Paper" && playerSelection === "Rock" ||
         computerSelection === "Scissors" && playerSelection === "Paper") {
