@@ -1,24 +1,14 @@
 // Rock Paper Scissors - by 210
 
 // Keep track of scores to declare BO5 winner
-let playerScore = 0;
-let computerScore = 0;
-let gameRunning = true;
+// let playerScore = 0;
+// let computerScore = 0;
+// let gameRunning = true;
+// while gameRunning;
 
 // ~~~~~~~~~~ LOGIC ~~~~~~~~~~
 
-while (gameRunning) {
-
-    playRound();
-
-    if (playerScore === 3) {
-        alert("You win, thanks for playing!");
-        break;
-    } else if (computerScore === 3) {
-        alert("The computer wins, thanks for playing!");
-        break;
-    }
-}
+playRound();
 
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
@@ -65,7 +55,7 @@ function playRound() {
     if (playerSelection === "Rock" && computerSelection === "Scissors" ||
         playerSelection === "Paper" && computerSelection === "Rock" ||
         playerSelection === "Scissors" && computerSelection === "Paper") {
-            playerScore++;
+            // playerScore++;
             roundWinner = "player"
         }
     
@@ -73,7 +63,7 @@ function playRound() {
     if (computerSelection === "Rock" && playerSelection === "Scissors" ||
         computerSelection === "Paper" && playerSelection === "Rock" ||
         computerSelection === "Scissors" && playerSelection === "Paper") {
-            computerScore++;
+            // computerScore++;
             roundWinner = "computer"
         }
 
