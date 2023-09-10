@@ -2,83 +2,103 @@ const buttons = document.querySelectorAll("button");
 const infoRoundWinner = document.querySelector(".info-round-winner")
 const infoScore = document.querySelector(".info-score")
 
-infoRoundWinner.textContent = "X beats Y!";
-infoScore.textContent = "Player 2 - 0 Computer";
 
-// Rock Paper Scissors - by 210
+
+// rock paper scissors - by 210
 
 // Keep track of scores to declare BO5 winner
-// let playerScore = 0;
-// let computerScore = 0;
-// let gameRunning = true;
-// while gameRunning;
+
 
 // ~~~~~~~~~~ LOGIC ~~~~~~~~~~
 
-buttons.forEach((button) => {
-    // for each button, run the playRound
-    // function passing in the button id
-    // as a string argument
+let playerScore = 0;
+let computerScore = 0;
 
-    playRound(button.id);
-})
+infoScore.textContent = "Player: | Computer:";
+
+// let gameRunning = true;
+
+// while (gameRunning) {}
+
+buttons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        let roundWinner = playRound(button.id)
+
+        announceRoundWinner(roundWinner);
+        updateScore();
+    });
+
+});
 
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
-function announceRoundWinner(roundWinner) {
-    if (roundWinner === "tie") {
-        infoRoundWinner.textContent = "It's a tie!"
+function updateScore() {
+    infoScore.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
+}
+
+function announceRoundWinner(roundInfo) {
+
+    // unpack return values
+
+    let playerChoice = roundInfo[0];
+    let computerChoice = roundInfo[1];
+    let roundWinner = roundInfo[2];
+
+    if (roundWinner = "player") {
+        infoRoundWinner.textContent = `Player wins! ${playerChoice}
+        beats ${computerChoice}!`;
+    } else if (roundWinner = "computer") {
+        infoRoundWinner.textContent = `Computer wins! ${computerChoice}
+        beats ${playerChoice}!`;
+    } else {
+        infoRoundWinner.textContent = `Both chose ${playerChoice},
+        it's a tie!`;
     }
 }
-function getComputerChoice() {
+
+function getcomputerChoice() {
     
     // Math.random() * n yields a random number up to n-1
     let randomNumber = ~~(Math.random() * 3);
 
     switch (randomNumber) {
         case 0:
-            return "Rock";
+            return "rock";
         case 1:
-            return "Paper";
+            return "paper";
         case 2:
-            return "Scissors";
+            return "scissors";
     }
 
 }
 
 function playRound(playerChoice) {
 
-    const computerSelection = getComputerChoice();
-    let roundWinner;
+    let computerChoice = getcomputerChoice();
+    let roundWinner = ""
 
-    if (playerChoice === computerSelection) {
+    if (playerChoice === computerChoice) {
         roundWinner = "tie";
     }
 
-    // check for cases where the player wins
-    if (playerChoice === "Rock" && computerSelection === "Scissors" ||
-        playerChoice === "Paper" && computerSelection === "Rock" ||
-        playerChoice === "Scissors" && computerSelection === "Paper") {
-            // playerScore++;
-            roundWinner = "player"
+    if (playerChoice === "rock" && computerChoice === "scissors" ||
+        playerChoice === "paper" && computerChoice === "rock" ||
+        playerChoice === "scissors" && computerChoice === "paper") {
+            roundWinner = "player";
+            playerScore++;
         }
     
-    // check for cases where the computer wins
-    if (computerSelection === "Rock" && playerChoice === "Scissors" ||
-        computerSelection === "Paper" && playerChoice === "Rock" ||
-        computerSelection === "Scissors" && playerChoice === "Paper") {
-            // computerScore++;
-            roundWinner = "computer"
+    if (computerChoice === "rock" && playerChoice === "scissors" ||
+        computerChoice === "paper" && playerChoice === "rock" ||
+        computerChoice === "scissors" && playerChoice === "paper") {
+            roundWinner = "computer";
+            computerScore++;
         }
+    
+    const roundInfo = [playerChoice, computerChoice, roundWinner];
 
-    return roundWinner;
-
-    // could do a cool thing here, like "Scissor cuts paper!" and so on
-    if (roundWinner === "tie") {
-        alert("It's a tie!");
-    } else if (roundWinner === "player") {
-        alert(`Player wins! ${playerChoice} beats ${computerSelection}!`)
-    } else {
-        alert(`Computer wins! ${computerSelection} beats ${playerChoice}!`)
-    }
+    // pack return values to display them onscreen
+    return roundInfo;
 }
