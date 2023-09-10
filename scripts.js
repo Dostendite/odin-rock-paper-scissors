@@ -1,38 +1,67 @@
-const buttons = document.querySelectorAll("button");
-const infoRoundWinner = document.querySelector(".info-round-winner")
-const infoScore = document.querySelector(".info-score")
-
-
+const infoRoundWinner = document.querySelector(".info-round-winner");
+const infoScore = document.querySelector(".info-score");
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+const buttonContainer = document.querySelector(".button-container");
 
 // rock paper scissors - by 210
-
-// Keep track of scores to declare BO5 winner
-
-
 // ~~~~~~~~~~ LOGIC ~~~~~~~~~~
 
 let playerScore = 0;
 let computerScore = 0;
 
-infoScore.textContent = "Player: | Computer:";
+infoScore.textContent = "Click any button above to play!";
 
-// let gameRunning = true;
+rockButton.addEventListener("click", function eventHandler() {
 
-// while (gameRunning) {}
+    if (isGameOver()) {
+        finishGame();
+    } else {
+        clickPlay("rock");
+    } 
+});
 
-buttons.forEach((button) => {
+paperButton.addEventListener("click", function eventHandler() {
 
-    button.addEventListener("click", () => {
+    if (isGameOver()) {
+        finishGame();
+    } else {
+        clickPlay("paper");
+    }
+});
 
-        let roundWinner = playRound(button.id)
-
-        announceRoundWinner(roundWinner);
-        updateScore();
-    });
-
+scissorsButton.addEventListener("click", function eventHandler()  {
+    if (isGameOver()) {
+        finishGame();
+    } else {
+        clickPlay("scissors");
+    }
 });
 
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function isGameOver() {
+    return (playerScore === 5 || computerScore === 5);
+}
+
+function finishGame(winner) {
+    if (winner === "player") {
+        infoRoundWinner.textContent = "You win the game!";
+    } else {
+        infoRoundWinner.textContent = "The computer wins the game!";
+    }
+}
+
+function clickPlay(playerChoice) {
+    let roundWinner = playRound(playerChoice);
+    announceRoundWinner(roundWinner);
+    updateScore();
+}
 
 function updateScore() {
     infoScore.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
@@ -40,16 +69,17 @@ function updateScore() {
 
 function announceRoundWinner(roundInfo) {
 
-    // unpack return values
-
     let playerChoice = roundInfo[0];
     let computerChoice = roundInfo[1];
     let roundWinner = roundInfo[2];
 
-    if (roundWinner = "player") {
-        infoRoundWinner.textContent = `Player wins! ${playerChoice}
+    playerChoice = capitalizeFirstLetter(playerChoice);
+    computerChoice = capitalizeFirstLetter(computerChoice);
+
+    if (roundWinner === "player") {
+        infoRoundWinner.textContent = `You win! ${playerChoice}
         beats ${computerChoice}!`;
-    } else if (roundWinner = "computer") {
+    } else if (roundWinner === "computer") {
         infoRoundWinner.textContent = `Computer wins! ${computerChoice}
         beats ${playerChoice}!`;
     } else {
@@ -58,9 +88,9 @@ function announceRoundWinner(roundInfo) {
     }
 }
 
-function getcomputerChoice() {
+function getComputerChoice() {
     
-    // Math.random() * n yields a random number up to n-1
+    // ~~(Math.random() * n) yields a random number up to n-1
     let randomNumber = ~~(Math.random() * 3);
 
     switch (randomNumber) {
@@ -76,8 +106,8 @@ function getcomputerChoice() {
 
 function playRound(playerChoice) {
 
-    let computerChoice = getcomputerChoice();
-    let roundWinner = ""
+    let computerChoice = getComputerChoice();
+    let roundWinner = "";
 
     if (playerChoice === computerChoice) {
         roundWinner = "tie";

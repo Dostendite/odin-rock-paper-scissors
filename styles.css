@@ -24,6 +24,7 @@ body {
     width: 600px;
     text-align: center;
     border: 2px solid white;
+    border-radius: 4px;
     background-color: #1f53ff;
     padding: 32px 64px;
 }
@@ -31,6 +32,7 @@ body {
 .button-container {
     width: 750px;
     border: 2px solid white;
+    border-radius: 4px;
     padding: 48px;
     background-color: #668aff;
     display: flex;
@@ -42,6 +44,7 @@ body {
 .button-container > * {
     /* text-align: center; */
     border: 2px solid #0025a1;
+    border-radius: 4px;
     background-color: #1f53ff;
     color: white;
     flex: 1;
@@ -60,10 +63,11 @@ body {
 /* first child shows X beats Y & round winner,
 second one shows score & game winner */
 .info-container {
-    background-color: #1f53ff;
     width: 600px;
-    font-size: 20px;
+    background-color: #1f53ff;
     border: 2px solid white;
+    border-radius: 4px;
+    font-size: 20px;
     padding: 32px 64px;
     text-align: center;
 }
