@@ -1,3 +1,10 @@
+const buttons = document.querySelectorAll("button");
+const infoRoundWinner = document.querySelector(".info-round-winner")
+const infoScore = document.querySelector(".info-score")
+
+infoRoundWinner.textContent = "X beats Y!";
+infoScore.textContent = "Player 2 - 0 Computer";
+
 // Rock Paper Scissors - by 210
 
 // Keep track of scores to declare BO5 winner
@@ -8,10 +15,21 @@
 
 // ~~~~~~~~~~ LOGIC ~~~~~~~~~~
 
-playRound();
+buttons.forEach((button) => {
+    // for each button, run the playRound
+    // function passing in the button id
+    // as a string argument
+
+    playRound(button.id);
+})
 
 // ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
+function announceRoundWinner(roundWinner) {
+    if (roundWinner === "tie") {
+        infoRoundWinner.textContent = "It's a tie!"
+    }
+}
 function getComputerChoice() {
     
     // Math.random() * n yields a random number up to n-1
@@ -28,51 +46,39 @@ function getComputerChoice() {
 
 }
 
-function getPlayerChoice () {
-    let selection = prompt("Choose your weapon (Rock, Paper, Scissors): ");
-
-    switch (selection[0].toLowerCase()) {
-        case "r":
-            return "Rock";
-        case "p":
-            return "Paper";
-        case "s":
-            return "Scissors";
-    }
-}
-
-function playRound() {
+function playRound(playerChoice) {
 
     const computerSelection = getComputerChoice();
-    const playerSelection = getPlayerChoice();
     let roundWinner;
 
-    if (playerSelection === computerSelection) {
+    if (playerChoice === computerSelection) {
         roundWinner = "tie";
     }
 
     // check for cases where the player wins
-    if (playerSelection === "Rock" && computerSelection === "Scissors" ||
-        playerSelection === "Paper" && computerSelection === "Rock" ||
-        playerSelection === "Scissors" && computerSelection === "Paper") {
+    if (playerChoice === "Rock" && computerSelection === "Scissors" ||
+        playerChoice === "Paper" && computerSelection === "Rock" ||
+        playerChoice === "Scissors" && computerSelection === "Paper") {
             // playerScore++;
             roundWinner = "player"
         }
     
     // check for cases where the computer wins
-    if (computerSelection === "Rock" && playerSelection === "Scissors" ||
-        computerSelection === "Paper" && playerSelection === "Rock" ||
-        computerSelection === "Scissors" && playerSelection === "Paper") {
+    if (computerSelection === "Rock" && playerChoice === "Scissors" ||
+        computerSelection === "Paper" && playerChoice === "Rock" ||
+        computerSelection === "Scissors" && playerChoice === "Paper") {
             // computerScore++;
             roundWinner = "computer"
         }
+
+    return roundWinner;
 
     // could do a cool thing here, like "Scissor cuts paper!" and so on
     if (roundWinner === "tie") {
         alert("It's a tie!");
     } else if (roundWinner === "player") {
-        alert(`Player wins! ${playerSelection} beats ${computerSelection}!`)
+        alert(`Player wins! ${playerChoice} beats ${computerSelection}!`)
     } else {
-        alert(`Computer wins! ${computerSelection} beats ${playerSelection}!`)
+        alert(`Computer wins! ${computerSelection} beats ${playerChoice}!`)
     }
 }

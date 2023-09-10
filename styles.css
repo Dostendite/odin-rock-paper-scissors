@@ -1,0 +1,69 @@
+body {
+    box-sizing: border-box;
+    font-size: 24px;
+    font-family: "poppins", sans-serif;
+    color: white;
+    background-color: #002499;
+}
+
+.container {
+    background-color: #002499;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.container > * {
+    margin: 32px;
+}
+
+.header {
+    font-size: 32px;
+    width: 600px;
+    text-align: center;
+    border: 2px solid white;
+    background-color: #1f53ff;
+    padding: 32px 64px;
+}
+
+.button-container {
+    width: 750px;
+    border: 2px solid white;
+    padding: 48px;
+    background-color: #668aff;
+    display: flex;
+    justify-content: space-around;
+    gap: 32px;
+}
+
+/* all buttons */
+.button-container > * {
+    /* text-align: center; */
+    border: 2px solid #0025a1;
+    background-color: #1f53ff;
+    color: white;
+    flex: 1;
+    height: 200px;
+    font-size: 24px;
+}
+
+.button-container > *:hover {
+    font-size: 26px;
+}
+
+.button-container > *:active {
+    background-color: blue;
+}
+
+/* first child shows X beats Y & round winner,
+second one shows score & game winner */
+.info-container {
+    background-color: #1f53ff;
+    width: 600px;
+    font-size: 20px;
+    border: 2px solid white;
+    padding: 32px 64px;
+    text-align: center;
+}
