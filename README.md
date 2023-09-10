@@ -1,7 +1,7 @@
 ## RPS w/ GUI
 
 Finally finished the game, there's a lot of stuff
-to fix up (especially the fact that even if you win or
+to fix & improve (especially the fact that even if you win or
 lose you have to click once more for the result
 to be displayed)
 
