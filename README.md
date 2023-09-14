@@ -1,6 +1,6 @@
-## RPS w/ GUI
+# Odin Rock Paper Scissors w/ GUI
 
-[Live preview](https://dostendite.github.io/odin-rock-paper-scissors/)
+👾 [**Live preview**](https://dostendite.github.io/odin-rock-paper-scissors/)
 
 Finally finished the game, there's a lot of stuff
 to fix & improve (especially the fact that even if you win or
