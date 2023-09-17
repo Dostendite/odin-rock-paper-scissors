@@ -1,5 +1,6 @@
 const infoRoundWinner = document.querySelector(".info-round-winner");
 const infoScore = document.querySelector(".info-score");
+const buttons = document.querySelectorAll("button");
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
@@ -7,6 +8,7 @@ const buttonContainer = document.querySelector(".button-container");
 
 let playerScore = 0;
 let computerScore = 0;
+let gameOver = false;
 
 infoScore.textContent = "Click any button above to play!";
 
@@ -29,22 +31,20 @@ function isGameOver() {
 }
 
 function finishGame(winner) {
+
     if (winner === "player") {
         infoRoundWinner.textContent = "You win the game!";
     } else {
         infoRoundWinner.textContent = "The computer wins the game!";
     }
+    
 }
 
 function clickPlay(playerChoice) {
 
-    if (isGameOver()) {
-        finishGame();
-    } else {
-        let roundWinner = playRound(playerChoice);
-        announceRoundWinner(roundWinner);
-        updateScore()
-    } 
+    let roundWinner = playRound(playerChoice);
+    announceRoundWinner(roundWinner);
+    updateScore()
 }
 
 function updateScore() {
@@ -70,10 +70,14 @@ function announceRoundWinner(roundInfo) {
         infoRoundWinner.textContent = `Both chose ${playerChoice},
         it's a tie!`;
     }
+    
+    if (isGameOver()) {
+        finishGame();
+    }
 }
 
 function getComputerChoice() {
-    
+
     let randomNumber = ~~(Math.random() * 3);
 
     switch (randomNumber) {
