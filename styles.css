@@ -3,11 +3,11 @@ body {
     font-size: 24px;
     font-family: "poppins", sans-serif;
     color: white;
-    background-color: #002499;
+    background-color: #f5f2df;
 }
 
 .container {
-    background-color: #002499;
+    background-color: #f5f2df;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,54 +20,53 @@ body {
 }
 
 .header {
-    font-size: 32px;
+    font-size: 48px;
     width: 600px;
     text-align: center;
-    border: 2px solid white;
+    border: 3px solid black;
     border-radius: 4px;
-    background-color: #1f53ff;
-    padding: 32px 64px;
+    background-color: #cc0e24;
+    padding: 16px 32px;
 }
 
 .button-container {
     width: 750px;
-    border: 2px solid white;
+    border: 3px solid black;
     border-radius: 4px;
     padding: 48px;
-    background-color: #668aff;
+    background-color: #cc0e24;
     display: flex;
     justify-content: space-around;
     gap: 32px;
 }
 
-/* all buttons */
-.button-container > * {
-    /* text-align: center; */
-    border: 2px solid #0025a1;
+button {
+    height: 200px;
+    border: 3px solid black;
     border-radius: 4px;
-    background-color: #1f53ff;
+    background-color: #0804d4;
     color: white;
     flex: 1;
-    height: 200px;
-    font-size: 24px;
+    font-size: 32px;
 }
 
-.button-container > *:hover {
-    font-size: 26px;
+button:hover {
+    background-color: #4e89ed;
 }
 
-.button-container > *:active {
-    background-color: blue;
+
+button:active {
+    background-color: #0025a1;
 }
 
 /* first child shows X beats Y & round winner,
 second one shows score & game winner */
 .info-container {
     width: 600px;
-    background-color: #1f53ff;
-    border: 2px solid white;
+    background-color: #cc0e24;
+    border: 3px solid black;
     border-radius: 4px;
-    font-size: 20px;
+    font-size: 22px;
     padding: 32px 64px;
     text-align: center;
 }
