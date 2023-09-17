@@ -8,8 +8,6 @@ const buttonContainer = document.querySelector(".button-container");
 
 let playerScore = 0;
 let computerScore = 0;
-let gameOver = false;
-
 infoScore.textContent = "Click any button above to play!";
 
 rockButton.addEventListener("click", () => {
@@ -33,11 +31,16 @@ function isGameOver() {
 function finishGame(winner) {
 
     if (winner === "player") {
-        infoRoundWinner.textContent = "You win the game!";
+        infoRoundWinner.textContent = "You win the game!"
+        updateScore();
     } else {
         infoRoundWinner.textContent = "The computer wins the game!";
+        updateScore();
     }
-    
+
+    rockButton.disabled = true;
+    paperButton.disabled = true;
+    scissorsButton.disabled = true;
 }
 
 function clickPlay(playerChoice) {
@@ -70,7 +73,7 @@ function announceRoundWinner(roundInfo) {
         infoRoundWinner.textContent = `Both chose ${playerChoice},
         it's a tie!`;
     }
-    
+
     if (isGameOver()) {
         finishGame();
     }
