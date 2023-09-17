@@ -5,41 +5,20 @@ const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 const buttonContainer = document.querySelector(".button-container");
 
-// rock paper scissors - by 210
-// ~~~~~~~~~~ LOGIC ~~~~~~~~~~
-
 let playerScore = 0;
 let computerScore = 0;
 
 infoScore.textContent = "Click any button above to play!";
 
-rockButton.addEventListener("click", function eventHandler() {
-
-    if (isGameOver()) {
-        finishGame();
-    } else {
-        clickPlay("rock");
-    } 
+rockButton.addEventListener("click", () => {
+    clickPlay("rock");
 });
-
-paperButton.addEventListener("click", function eventHandler() {
-
-    if (isGameOver()) {
-        finishGame();
-    } else {
-        clickPlay("paper");
-    }
+paperButton.addEventListener("click", () => {
+    clickPlay("paper");
 });
-
-scissorsButton.addEventListener("click", function eventHandler()  {
-    if (isGameOver()) {
-        finishGame();
-    } else {
-        clickPlay("scissors");
-    }
+scissorsButton.addEventListener("click", () => {
+    clickPlay("scissors");
 });
-
-// ~~~~~~~~ FUNCTIONS ~~~~~~~~
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -58,9 +37,14 @@ function finishGame(winner) {
 }
 
 function clickPlay(playerChoice) {
-    let roundWinner = playRound(playerChoice);
-    announceRoundWinner(roundWinner);
-    updateScore();
+
+    if (isGameOver()) {
+        finishGame();
+    } else {
+        let roundWinner = playRound(playerChoice);
+        announceRoundWinner(roundWinner);
+        updateScore()
+    } 
 }
 
 function updateScore() {
@@ -90,7 +74,6 @@ function announceRoundWinner(roundInfo) {
 
 function getComputerChoice() {
     
-    // ~~(Math.random() * n) yields a random number up to n-1
     let randomNumber = ~~(Math.random() * 3);
 
     switch (randomNumber) {
@@ -129,6 +112,5 @@ function playRound(playerChoice) {
     
     const roundInfo = [playerChoice, computerChoice, roundWinner];
 
-    // pack return values to display them onscreen
     return roundInfo;
 }
