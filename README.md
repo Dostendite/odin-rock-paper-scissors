@@ -4,4 +4,4 @@
 
 **Now bugless & with improved styling!**
 
-**Pending:** Icons for each weapon
+**Pending:** Icons for each weapon & outcome & restart button
