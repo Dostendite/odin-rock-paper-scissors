@@ -4,4 +4,7 @@
 
 **Now bugless & with improved styling!**
 
-**Pending:** Icons for each weapon & outcome & restart button
+**Pending:** 
+- Icons for each weapon & outcome
+- Restart button
+- Fix info container changing size
