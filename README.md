@@ -2,9 +2,9 @@
 
 👾 [**Live preview**](https://dostendite.github.io/odin-rock-paper-scissors/)
 
-**Now bugless & with improved styling!**
-
 **Pending:** 
+- Fix bug where Computer is always shown as winner
 - Icons for each weapon & outcome
 - Restart button
 - Fix info container changing size
+- Rework Styling
