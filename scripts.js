@@ -75,7 +75,7 @@ function announceRoundWinner(roundInfo) {
     }
 
     if (isGameOver()) {
-        finishGame();
+        finishGame(roundWinner);
     }
 }
 
