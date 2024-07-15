@@ -6,6 +6,7 @@
 - Info container changes size
 
 ### Possible improvements:
+- Add a "new game" button
 - Add icons for each weapon & outcome
 - Add restart button
 - Rework Styling
