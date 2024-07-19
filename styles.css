@@ -1,32 +1,37 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     box-sizing: border-box;
     font-size: 24px;
-    font-family: "poppins", sans-serif;
+    font-family: \"poppins\", sans-serif;
     color: white;
     background-color: #e3debc;
 }
 
-.container {
-    background-color: #e3debc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
-}
-
-.container > * {
-    margin: 32px;
-}
-
-.header {
-    font-size: 48px;
-    width: 600px;
-    text-align: center;
+button {
+    height: 200px;
     border: 3px solid black;
     border-radius: 4px;
-    background-color: #cc0e24;
-    padding: 16px 32px;
+    background-color: #0804d4;
+    color: white;
+    flex: 1;
+    font-size: 32px;
+}
+
+button:active {
+    background-color: #0502ab;
+    position: relative;
+    top: 3px;
+}
+
+button:hover {
+    background-color: #0502ab;
 }
 
 .button-container {
@@ -40,24 +45,34 @@ body {
     gap: 32px;
 }
 
-button {
-    height: 200px;
+.container > * {
+    margin: 30px;
+}
+
+.container {
+    background-color: #e3debc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.header {
+    margin-top: 64px;
+    font-size: 48px;
+    width: 600px;
+    text-align: center;
     border: 3px solid black;
     border-radius: 4px;
-    background-color: #0804d4;
-    color: white;
-    flex: 1;
-    font-size: 32px;
+    background-color: #cc0e24;
+    padding: 16px 32px;
 }
 
-button:hover {
-    background-color: #0502ab;
-}
-
-button:active {
-    background-color: #0502ab;
-    position: relative;
-    top: 3px;
+.header,
+.button-container,
+.info-container {
+    box-shadow: 1px 1px 1px black;
 }
 
 /* first child shows X beats Y & round winner,
@@ -71,3 +86,9 @@ second one shows score & game winner */
     padding: 32px 64px;
     text-align: center;
 }
+#restart-button {
+    height: 75px;
+    width: 425px;
+    font-size: 24px;
+}
+
