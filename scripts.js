@@ -5,42 +5,53 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 const buttonContainer = document.querySelector(".button-container");
+const restartButton = document.querySelector("#restart-button")
 
 rockButton.addEventListener("click", () => clickPlay("rock"));
 paperButton.addEventListener("click", () => clickPlay("paper"));
 scissorsButton.addEventListener("click", () => clickPlay("scissors"));
+restartButton.addEventListener("click", () => restartGame())
 
 let playerScore = 0;
 let computerScore = 0;
+let roundWinner = ""
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function clickPlay(playerChoice) {
-    let roundWinner = playRound(playerChoice);
+    if (isGameOver()) {
+        finishGame(roundWinner);
+        return;
+    }
+
+    roundWinner = playRound(playerChoice);
     announceRoundWinner(roundWinner);
     updateScore()
+
+    if (isGameOver()) {
+        finishGame(roundWinner);
+        return;
+    }
 }
 
 function isGameOver() {
-    return (playerScore === 5 || computerScore === 5);
+    return playerScore === 5 || computerScore === 5;
 }
 
 function finishGame(winner) {
     if (winner === "player") {
         infoRoundWinner.textContent = "You win the game!"
-        updateScore();
+        infoScore.textContent = ""
+        restartButton.style.display = "initial"
     } else {
         infoRoundWinner.textContent = "The computer wins the game!";
-        updateScore();
+        infoScore.textContent = ""
+        restartButton.style.display = "initial"
     }
-
-    rockButton.disabled = true;
-    paperButton.disabled = true;
-    scissorsButton.disabled = true;
+    
 }
-
 
 function updateScore() {
     infoScore.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
@@ -64,10 +75,6 @@ function announceRoundWinner(roundInfo) {
         infoRoundWinner.textContent = `Both chose ${playerChoice},
         it's a tie!`;
     }
-
-    if (isGameOver()) {
-        finishGame(roundWinner);
-    }
 }
 
 function getComputerChoice() {
@@ -85,7 +92,6 @@ function getComputerChoice() {
 
 function playRound(playerChoice) {
     let computerChoice = getComputerChoice();
-    let roundWinner = "";
 
     if (playerChoice === computerChoice) {
         roundWinner = "tie";
@@ -109,4 +115,11 @@ function playRound(playerChoice) {
     return roundInfo;
 }
 
-
+function restartGame() {
+    playerScore = 0
+    computerScore = 0
+    roundWinner = ""
+    infoScore.textContent = "Click any button above to play!"
+    infoRoundWinner.textContent = ""
+    restartButton.style.display = "none"
+}

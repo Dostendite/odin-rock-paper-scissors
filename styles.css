@@ -9,7 +9,7 @@
 body {
     box-sizing: border-box;
     font-size: 24px;
-    font-family: \"poppins\", sans-serif;
+    font-family: "Poppins", sans-serif;
     color: white;
     background-color: #e3debc;
 }
@@ -92,10 +92,11 @@ second one shows score & game winner */
 }
 
 #restart-button {
+    /* font-family: "Lexend", sans-serif !important; */
     margin-top: 16px;
     height: 75px;
     width: 425px;
-    font-size: 24px;
+    font-size: 26px;
     display: none;
 }
 
