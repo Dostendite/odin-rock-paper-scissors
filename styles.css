@@ -69,10 +69,14 @@ button:hover {
     padding: 16px 32px;
 }
 
+div, button, p {
+    text-shadow: 0.5px 0.5px 1px black;
+}
+
 .header,
 .button-container,
 .info-container {
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 0.5px 0.5px 1px black;
 }
 
 /* first child shows X beats Y & round winner,
@@ -86,9 +90,12 @@ second one shows score & game winner */
     padding: 32px 64px;
     text-align: center;
 }
+
 #restart-button {
+    margin-top: 16px;
     height: 75px;
     width: 425px;
     font-size: 24px;
+    display: none;
 }
 
