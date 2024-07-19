@@ -6,22 +6,21 @@ const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 const buttonContainer = document.querySelector(".button-container");
 
+rockButton.addEventListener("click", () => clickPlay("rock"));
+paperButton.addEventListener("click", () => clickPlay("paper"));
+scissorsButton.addEventListener("click", () => clickPlay("scissors"));
+
 let playerScore = 0;
 let computerScore = 0;
-infoScore.textContent = "Click any button above to play!";
-
-rockButton.addEventListener("click", () => {
-    clickPlay("rock");
-});
-paperButton.addEventListener("click", () => {
-    clickPlay("paper");
-});
-scissorsButton.addEventListener("click", () => {
-    clickPlay("scissors");
-});
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function clickPlay(playerChoice) {
+    let roundWinner = playRound(playerChoice);
+    announceRoundWinner(roundWinner);
+    updateScore()
 }
 
 function isGameOver() {
@@ -29,7 +28,6 @@ function isGameOver() {
 }
 
 function finishGame(winner) {
-
     if (winner === "player") {
         infoRoundWinner.textContent = "You win the game!"
         updateScore();
@@ -43,19 +41,12 @@ function finishGame(winner) {
     scissorsButton.disabled = true;
 }
 
-function clickPlay(playerChoice) {
-
-    let roundWinner = playRound(playerChoice);
-    announceRoundWinner(roundWinner);
-    updateScore()
-}
 
 function updateScore() {
     infoScore.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
 }
 
 function announceRoundWinner(roundInfo) {
-
     let playerChoice = roundInfo[0];
     let computerChoice = roundInfo[1];
     let roundWinner = roundInfo[2];
@@ -80,9 +71,7 @@ function announceRoundWinner(roundInfo) {
 }
 
 function getComputerChoice() {
-
     let randomNumber = ~~(Math.random() * 3);
-
     switch (randomNumber) {
         case 0:
             return "rock";
@@ -95,7 +84,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice) {
-
     let computerChoice = getComputerChoice();
     let roundWinner = "";
 
@@ -118,6 +106,7 @@ function playRound(playerChoice) {
         }
     
     const roundInfo = [playerChoice, computerChoice, roundWinner];
-
     return roundInfo;
 }
+
+
