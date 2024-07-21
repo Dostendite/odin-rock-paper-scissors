@@ -14,7 +14,7 @@ restartButton.addEventListener("click", () => restartGame())
 
 let playerScore = 0;
 let computerScore = 0;
-let roundWinner = ""
+let roundWinner = "";
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -22,16 +22,16 @@ function capitalizeFirstLetter(string) {
 
 function clickPlay(playerChoice) {
     if (isGameOver()) {
-        finishGame(roundWinner);
+        finishGame();
         return;
     }
 
-    roundWinner = playRound(playerChoice);
-    announceRoundWinner(roundWinner);
-    updateScore()
+    roundInfo = playRound(playerChoice);
+    announceRoundWinner(roundInfo);
+    updateScore();
 
     if (isGameOver()) {
-        finishGame(roundWinner);
+        finishGame();
         return;
     }
 }
@@ -40,8 +40,8 @@ function isGameOver() {
     return playerScore === 5 || computerScore === 5;
 }
 
-function finishGame(winner) {
-    if (winner === "player") {
+function finishGame() {
+    if (roundWinner === "player") {
         infoRoundWinner.textContent = "You win the game!"
         infoScore.textContent = ""
         restartButton.style.display = "initial"
@@ -60,7 +60,6 @@ function updateScore() {
 function announceRoundWinner(roundInfo) {
     let playerChoice = roundInfo[0];
     let computerChoice = roundInfo[1];
-    let roundWinner = roundInfo[2];
 
     playerChoice = capitalizeFirstLetter(playerChoice);
     computerChoice = capitalizeFirstLetter(computerChoice);
@@ -111,8 +110,7 @@ function playRound(playerChoice) {
             computerScore++;
         }
     
-    const roundInfo = [playerChoice, computerChoice, roundWinner];
-    return roundInfo;
+    return [playerChoice, computerChoice];
 }
 
 function restartGame() {
