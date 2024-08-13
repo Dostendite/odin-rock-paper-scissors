@@ -16,10 +16,6 @@ let playerScore = 0;
 let computerScore = 0;
 let roundWinner = "";
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function clickPlay(playerChoice) {
     if (isGameOver()) {
         finishGame();
@@ -86,7 +82,6 @@ function getComputerChoice() {
         case 2:
             return "scissors";
     }
-
 }
 
 function playRound(playerChoice) {
@@ -94,23 +89,22 @@ function playRound(playerChoice) {
 
     if (playerChoice === computerChoice) {
         roundWinner = "tie";
+    } else if
+        (playerChoice === "rock"     && computerChoice === "scissors" ||
+        playerChoice  === "paper"    && computerChoice === "rock"     ||
+        playerChoice  === "scissors" && computerChoice === "paper") {
+        roundWinner = "player";
+        playerScore++;
     }
-
-    if (playerChoice === "rock" && computerChoice === "scissors" ||
-        playerChoice === "paper" && computerChoice === "rock" ||
-        playerChoice === "scissors" && computerChoice === "paper") {
-            roundWinner = "player";
-            playerScore++;
-        }
-    
-    if (computerChoice === "rock" && playerChoice === "scissors" ||
-        computerChoice === "paper" && playerChoice === "rock" ||
-        computerChoice === "scissors" && playerChoice === "paper") {
-            roundWinner = "computer";
-            computerScore++;
-        }
-    
+    else {
+        roundWinner = "computer";
+        computerScore++;
+    }
     return [playerChoice, computerChoice];
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function restartGame() {
